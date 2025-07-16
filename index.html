@@ -85,7 +85,7 @@ function iniciarJuego() {
   nombre = inputNombre;
 
   // Ocultar campo de nombre y mostrar juego
-  document.getElementById("inicio").style.display = "none";
+  document.getElementById("contenedorJuego").style.display = "block";
   document.getElementById("pregunta").style.display = "block";
   document.getElementById("opciones").style.display = "block";
   document.getElementById("vidas").style.display = "block";
@@ -217,6 +217,8 @@ function cambiarJugador() {
   document.getElementById("pregunta").innerText = "";
   document.getElementById("opciones").innerHTML = "";
   document.getElementById("nombreJugador").value = "";
+
+  document.getElementById("contenedorJuego").style.display = "none";
 }
 
 </script>
