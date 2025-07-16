@@ -29,10 +29,14 @@
   <div id="diploma" class="caja-contenido" style="display: none;">
     <h2>🎓 ¡Felicitaciones, <span id="ganador"></span>! 🎓</h2>
     <p>¡Completaste la Aventura por Colombia!</p>
-    <p>¡Eres un pro de la geografía Colombiana!</p>
+    <p>¡Puntaje final: <span id="puntajeFinal"></span>!</p>
     <button onclick="reiniciarJuego()">🔄 Jugar otra vez</button>
     <button onclick="cambiarJugador()">👤 Cambiar de jugador</button>
   </div>
+
+  <footer style="margin-top: 40px; font-size: 0.9em; color: #555;">
+    Hecho con ❤️ por Carolina Gallo usando la IA Noah (ChatGPT)
+  </footer>
 
   <script>
     const datos = [
@@ -75,6 +79,7 @@
     let preguntasHechas = 0;
     const totalPreguntas = 10;
     let nombre = "";
+    let preguntasDisponibles = [];
 
     function iniciarJuego() {
       const inputNombre = document.getElementById("nombreJugador").value.trim();
@@ -84,13 +89,13 @@
       }
 
       nombre = inputNombre;
+      preguntasDisponibles = [...datos]; // Reinicia el banco de preguntas
+
       document.getElementById("inicio").style.display = "none";
       document.getElementById("contenedorJuego").style.display = "block";
       document.getElementById("puntaje").style.display = "block";
       document.getElementById("vidas").style.display = "block";
-      document.getElementById("resultado").innerText = "";
-      document.getElementById("pregunta").innerText = "";
-      document.getElementById("opciones").innerHTML = "";
+      document.getElementById("diploma").style.display = "none";
 
       puntaje = 0;
       vidas = 3;
@@ -107,7 +112,7 @@
           <button onclick="reiniciarJuego()">🔄 Intentar de nuevo</button>
           <button onclick="cambiarJugador()">👤 Cambiar de jugador</button>
         `;
-        document.getElementById("resultado").innerText = "";
+        document.getElementById("resultado").innerText = `Puntaje final: ${puntaje}`;
         return;
       }
 
@@ -116,8 +121,8 @@
         return;
       }
 
-      const indice = Math.floor(Math.random() * datos.length);
-      const pregunta = datos[indice];
+      const indice = Math.floor(Math.random() * preguntasDisponibles.length);
+      const pregunta = preguntasDisponibles.splice(indice, 1)[0];
 
       const opciones = [pregunta.capital];
       while (opciones.length < 3) {
@@ -127,8 +132,7 @@
 
       opciones.sort(() => Math.random() - 0.5);
 
-      document.getElementById("pregunta").innerText =
-        `¿Cuál es la capital de ${pregunta.departamento}?`;
+      document.getElementById("pregunta").innerText = `¿Cuál es la capital de ${pregunta.departamento}?`;
 
       const opcionesDiv = document.getElementById("opciones");
       opcionesDiv.innerHTML = "";
@@ -165,33 +169,31 @@
       document.getElementById("puntaje").style.display = "none";
       document.getElementById("vidas").style.display = "none";
       document.getElementById("resultado").style.display = "none";
+
       document.getElementById("ganador").innerText = nombre;
+      document.getElementById("puntajeFinal").innerText = puntaje;
       document.getElementById("diploma").style.display = "block";
     }
 
     function reiniciarJuego() {
-      puntaje = 0;
-      vidas = 3;
-      preguntasHechas = 0;
-
-      document.getElementById("contenedorJuego").style.display = "block";
-      document.getElementById("diploma").style.display = "none";
-      actualizarEstado();
-      cargarPregunta();
+      iniciarJuego();
     }
 
     function cambiarJugador() {
+      nombre = "";
       puntaje = 0;
       vidas = 3;
       preguntasHechas = 0;
-      nombre = "";
+      preguntasDisponibles = [];
 
       document.getElementById("inicio").style.display = "block";
-      document.getElementById("diploma").style.display = "none";
       document.getElementById("contenedorJuego").style.display = "none";
+      document.getElementById("diploma").style.display = "none";
       document.getElementById("puntaje").style.display = "none";
       document.getElementById("vidas").style.display = "none";
       document.getElementById("nombreJugador").value = "";
+      document.getElementById("resultado").innerText = "";
+      document.getElementById("opciones").innerHTML = "";
     }
   </script>
 
