@@ -143,15 +143,18 @@
         boton.onclick = () => {
           if (opcion === pregunta.capital) {
             document.getElementById("resultado").innerText = "✅ ¡Correcto!";
+            document.getElementById("resultado").className = "resultado-correcto";
             puntaje++;
           } else {
             document.getElementById("resultado").innerText = `❌ Incorrecto. Era ${pregunta.capital}`;
+            document.getElementById("resultado").className = "resultado-incorrecto";
             vidas--;
           }
           preguntasHechas++;
           actualizarEstado();
           setTimeout(() => {
             document.getElementById("resultado").innerText = "";
+            document.getElementById("resultado").className = "";
             cargarPregunta();
           }, 1000);
         };
