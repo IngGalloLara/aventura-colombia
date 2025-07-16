@@ -1,6 +1,5 @@
-/* ======= ESTILO GENERAL ======= */
 body {
-  font-family: 'Arial Rounded MT Bold', 'Fredoka', sans-serif;
+  font-family: 'Arial Rounded MT Bold', sans-serif;
   background-color: #fdfdfd;
   color: #333;
   text-align: center;
@@ -12,11 +11,6 @@ h1 {
   font-size: 2.2em;
   color: #0077b6;
   margin-bottom: 10px;
-}
-
-/* ======= INICIO DEL JUEGO ======= */
-#inicio {
-  margin-bottom: 30px;
 }
 
 #inicio input[type="text"] {
@@ -38,14 +32,8 @@ h1 {
   font-size: 1em;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-#inicio button:hover {
-  background-color: #019875;
-}
-
-/* ======= PREGUNTAS Y OPCIONES ======= */
 #pregunta {
   font-size: 1.4em;
   margin: 20px 0;
@@ -61,16 +49,12 @@ h1 {
   background-color: #ffeaa7;
   color: #2d3436;
   cursor: pointer;
-  transition: background-color 0.3s;
-  width: 80%;
-  max-width: 300px;
 }
 
 #opciones button:hover {
   background-color: #fab1a0;
 }
 
-/* ======= RESULTADO ======= */
 #resultado {
   font-size: 1.2em;
   margin: 15px 0;
@@ -78,13 +62,11 @@ h1 {
   min-height: 1.4em;
 }
 
-/* ======= PUNTAJE Y VIDAS ======= */
 #puntaje, #vidas {
   font-size: 1.1em;
   margin: 10px 0;
 }
 
-/* ======= DIPLOMA ======= */
 #diploma {
   margin-top: 40px;
   padding: 30px 20px;
@@ -118,38 +100,10 @@ h1 {
   font-size: 1em;
   border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.2s;
 }
 
-#diploma button:hover {
-  transform: scale(1.05);
-}
-
-/* ======= BOTONES GENERALES ======= */
-button.opcion {
-  background-color: #ffeaa7;
-}
-
-button.opcion:hover {
-  background-color: #fab1a0;
-}
-
-/* ======= RESPONSIVO ======= */
-@media (max-width: 600px) {
-  body {
-    padding: 15px;
-  }
-
-  #pregunta {
-    font-size: 1.2em;
-  }
-
-  #opciones button {
-    font-size: 1em;
-    width: 90%;
-  }
-
-  #inicio input[type="text"] {
-    width: 90%;
-  }
+.creditos {
+  font-size: 0.8em;
+  color: #888;
+  margin-top: 50px;
 }
