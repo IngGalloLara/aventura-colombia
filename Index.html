@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aventura por Colombia</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: #fef9f4;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #00695c;
+    }
+    #pregunta {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .opcion {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #e0f7fa;
+      border: 2px solid #00796b;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 300px;
+      font-size: 18px;
+    }
+    .opcion:hover {
+      background-color: #b2ebf2;
+    }
+    #resultado, #puntaje, #vidas {
+      font-size: 20px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    #diploma {
+      display: none;
+      margin-top: 30px;
+      border: 3px dashed #8e44ad;
+      padding: 20px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #f3e5f5;
+    }
+    #nombreJugador {
+      padding: 5px;
+      font-size: 16px;
+    }
+    #inicio {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🧭 Aventura por Colombia 🗺️</h1>
+
+<div id="inicio">
+  <label for="nombreJugador">Tu nombre: </label>
+  <input type="text" id="nombreJugador" placeholder="Escribe tu nombre">
+  <button onclick="iniciarJuego()">Iniciar juego</button>
+</div>
+
+<div id="pregunta"></div>
+<div id="opciones"></div>
+<div id="resultado"></div>
+<div id="puntaje">Puntos: 0</div>
+<div id="vidas">Vidas: 3</div>
+
+<div id="diploma">
+  <h2>🎓 ¡Felicitaciones, <span id="ganador"></span>! 🎓</h2>
+  <p>¡Completaste la Aventura por Colombia!</p>
+  <p>¡Eres un pro de la geografía Colombiana!</p>
+  <button onclick="reiniciarJuego()">🔄 Jugar otra vez</button>
+  <button onclick="cambiarJugador()">👤 Cambiar de jugador</button>
+</div>
+
+<script>
+  const datos = [
+    { departamento: "Amazonas", capital: "Leticia" },
+    { departamento: "Antioquia", capital: "Medellín" },
+    { departamento: "Arauca", capital: "Arauca" },
+    { departamento: "Atlántico", capital: "Barranquilla" },
+    { departamento: "Bolívar", capital: "Cartagena de Indias" },
+    { departamento: "Boyacá", capital: "Tunja" },
+    { departamento: "Caldas", capital: "Manizales" },
+    { departamento: "Caquetá", capital: "Florencia" },
+    { departamento: "Casanare", capital: "Yopal" },
+    { departamento: "Cauca", capital: "Popayán" },
+    { departamento: "Cesar", capital: "Valledupar" },
+    { departamento: "Chocó", capital: "Quibdó" },
+    { departamento: "Córdoba", capital: "Montería" },
+    { departamento: "Cundinamarca", capital: "Bogotá" },
+    { departamento: "Guainía", capital: "Inírida" },
+    { departamento: "Guaviare", capital: "San José del Guaviare" },
+    { departamento: "Huila", capital: "Neiva" },
+    { departamento: "La Guajira", capital: "Riohacha" },
+    { departamento: "Magdalena", capital: "Santa Marta" },
+    { departamento: "Meta", capital: "Villavicencio" },
+    { departamento: "Nariño", capital: "Pasto" },
+    { departamento: "Norte de Santander", capital: "Cúcuta" },
+    { departamento: "Putumayo", capital: "Mocoa" },
+    { departamento: "Quindío", capital: "Armenia" },
+    { departamento: "Risaralda", capital: "Pereira" },
+    { departamento: "San Andrés y Providencia", capital: "San Andrés" },
+    { departamento: "Santander", capital: "Bucaramanga" },
+    { departamento: "Sucre", capital: "Sincelejo" },
+    { departamento: "Tolima", capital: "Ibagué" },
+    { departamento: "Valle del Cauca", capital: "Cali" },
+    { departamento: "Vaupés", capital: "Mitú" },
+    { departamento: "Vichada", capital: "Puerto Carreño" }
+  ];
+
+  let puntaje = 0;
+  let vidas = 3;
+  let preguntasHechas = 0;
+  const totalPreguntas = 10;
+  let nombre = "";
+
+function iniciarJuego() {
+  const inputNombre = document.getElementById("nombreJugador").value.trim();
+
+  if (inputNombre === "") {
+    alert("Por favor, escribe un nombre para jugar.");
+    return;
+  }
+
+  nombre = inputNombre;
+
+  // Ocultar campo de nombre y mostrar juego
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("pregunta").style.display = "block";
+  document.getElementById("opciones").style.display = "block";
+  document.getElementById("vidas").style.display = "block";
+  document.getElementById("puntaje").style.display = "block";
+  document.getElementById("resultado").style.display = "block";
+
+  // Limpiar estado visual
+  document.getElementById("resultado").innerText = "";
+  document.getElementById("pregunta").innerText = "";
+  document.getElementById("opciones").innerHTML = "";
+
+  puntaje = 0;
+  vidas = 3;
+  preguntasHechas = 0;
+
+  actualizarEstado();
+  cargarPregunta();
+}
+  function cargarPregunta() {
+    if (vidas === 0) {
+  document.getElementById("pregunta").innerText = "😢 Te quedaste sin vidas.";
+  document.getElementById("opciones").innerHTML = `
+    <button onclick="reiniciarJuego()">🔄 Intentar de nuevo</button>
+    <button onclick="cambiarJugador()">👤 Cambiar de jugador</button>
+  `;
+  document.getElementById("resultado").innerText = "";
+  return;
+}
+
+    if (preguntasHechas >= totalPreguntas) {
+      mostrarDiploma();
+      return;
+    }
+
+    const indice = Math.floor(Math.random() * datos.length);
+    const pregunta = datos[indice];
+
+    const opciones = [pregunta.capital];
+    while (opciones.length < 3) {
+      let aleatorio = datos[Math.floor(Math.random() * datos.length)].capital;
+      if (!opciones.includes(aleatorio)) opciones.push(aleatorio);
+    }
+
+    opciones.sort(() => Math.random() - 0.5);
+
+    document.getElementById("pregunta").innerText =
+      `¿Cuál es la capital de ${pregunta.departamento}?`;
+
+    const opcionesDiv = document.getElementById("opciones");
+    opcionesDiv.innerHTML = "";
+    opciones.forEach(opcion => {
+      const boton = document.createElement("button");
+      boton.innerText = opcion;
+      boton.classList.add("opcion");
+      boton.onclick = () => {
+        if (opcion === pregunta.capital) {
+          document.getElementById("resultado").innerText = "✅ ¡Correcto!";
+          puntaje++;
+        } else {
+          document.getElementById("resultado").innerText =
+            `❌ Incorrecto. Era ${pregunta.capital}`;
+          vidas--;
+        }
+        preguntasHechas++;
+        actualizarEstado();
+        setTimeout(() => {
+          document.getElementById("resultado").innerText = "";
+          cargarPregunta();
+        }, 1000);
+      };
+      opcionesDiv.appendChild(boton);
+    });
+  }
+
+  function actualizarEstado() {
+    document.getElementById("puntaje").innerText = `Puntos: ${puntaje}`;
+    document.getElementById("vidas").innerText = `Vidas: ${vidas}`;
+  }
+
+  function mostrarDiploma() {
+    document.getElementById("pregunta").style.display = "none";
+    document.getElementById("opciones").style.display = "none";
+    document.getElementById("vidas").style.display = "none";
+    document.getElementById("puntaje").style.display = "none";
+    document.getElementById("resultado").style.display = "none";
+
+    document.getElementById("ganador").innerText = nombre;
+    document.getElementById("diploma").style.display = "block";
+  }
+	
+function reiniciarJuego() {
+  puntaje = 0;
+  vidas = 3;
+  preguntasHechas = 0;
+
+  document.getElementById("pregunta").style.display = "block";
+  document.getElementById("opciones").style.display = "block";
+  document.getElementById("vidas").style.display = "block";
+  document.getElementById("puntaje").style.display = "block";
+  document.getElementById("resultado").style.display = "block";
+  document.getElementById("diploma").style.display = "none";
+
+  document.getElementById("resultado").innerText = "";
+  document.getElementById("pregunta").innerText = "";
+  document.getElementById("opciones").innerHTML = "";
+  actualizarEstado();	
+  cargarPregunta();
+}
+function cambiarJugador() {
+  // Restablece valores
+  puntaje = 0;
+  vidas = 3;
+  preguntasHechas = 0;
+  nombre = "";
+
+  // Muestra el formulario para ingresar nombre
+  document.getElementById("inicio").style.display = "block";
+
+  // Oculta todo lo demás
+  document.getElementById("diploma").style.display = "none";
+  document.getElementById("pregunta").style.display = "none";
+  document.getElementById("opciones").style.display = "none";
+  document.getElementById("vidas").style.display = "none";
+  document.getElementById("puntaje").style.display = "none";
+  document.getElementById("resultado").style.display = "none";
+
+  // Limpia datos visuales
+  document.getElementById("resultado").innerText = "";
+  document.getElementById("pregunta").innerText = "";
+  document.getElementById("opciones").innerHTML = "";
+  document.getElementById("nombreJugador").value = "";
+}
+
+</script>
+
+</body>
+</html>
