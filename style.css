@@ -1,6 +1,12 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom right, #ffeaa7, #fab1a0);
+  background-color: #dff9fb;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Colombia_physical_map.svg/1200px-Colombia_physical_map.svg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   margin: 0;
   padding: 0;
   text-align: center;
@@ -8,16 +14,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
 }
 
 h1, h2 {
-  color: #d63031;
+  color: #0984e3; /* azul vibrante */
 }
 
 button {
-  background-color: #0984e3;
+  background-color: #00b894; /* verde alegre */
   color: white;
   border: none;
   padding: 12px 24px;
@@ -30,7 +36,7 @@ button {
 }
 
 button:hover {
-  background-color: #74b9ff;
+  background-color: #55efc4; /* verde menta */
   transform: scale(1.05);
 }
 
@@ -72,6 +78,13 @@ input {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+#pregunta {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 @media (max-width: 600px) {
   body {
     padding: 10px;
@@ -93,3 +106,4 @@ input {
     font-size: 16px;
   }
 }
+
