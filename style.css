@@ -1,7 +1,7 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #dff9fb;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Colombia_physical_map.svg/1200px-Colombia_physical_map.svg.png');
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Colombia_departamentos.svg/800px-Colombia_departamentos.svg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -84,7 +84,15 @@ input {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
+#pregunta, #opciones, #puntaje, #vidas, #resultado {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 15px;
+  border-radius: 12px;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
 @media (max-width: 600px) {
   body {
     padding: 10px;
