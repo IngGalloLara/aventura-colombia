@@ -1,0 +1,61 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #ffeaa7, #fab1a0);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #2d3436;
+}
+
+h1, h2 {
+  color: #d63031;
+}
+
+button {
+  background-color: #0984e3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #74b9ff;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #b2bec3;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+#vidas, #puntaje {
+  font-weight: bold;
+  margin: 10px;
+}
+
+#diploma {
+  background-color: white;
+  border: 2px solid #ffeaa7;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#resultado {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#inicio {
+  margin-top: 40px;
+}
