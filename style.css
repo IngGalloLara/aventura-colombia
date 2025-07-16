@@ -1,6 +1,7 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #dafbfd;
+  background: #dafbfd url('https://cdn.pixabay.com/photo/2016/10/12/14/28/colombia-1738892_1280.png') no-repeat center center fixed;
+  background-size: cover;
   text-align: center;
   margin: 0;
   padding: 20px;
@@ -12,7 +13,7 @@ h1 {
 }
 
 .caja-contenido {
-  background: white;
+  background: rgba(255, 255, 255, 0.88);
   padding: 15px;
   border-radius: 12px;
   margin: 10px auto;
@@ -27,6 +28,13 @@ input, button {
   margin: 5px;
   border-radius: 8px;
   border: none;
+}
+
+#nombreJugador {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 button {
