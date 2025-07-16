@@ -1,128 +1,57 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #dff9fb;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Colombia_departamentos.svg/800px-Colombia_departamentos.svg.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-  margin: 0;
-  padding: 0;
+  background-color: #dafbfd;
   text-align: center;
-  color: #2d3436;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
 }
 
-h1, h2 {
-  color: #0984e3; /* azul vibrante */
+h1 {
+  color: #0275d8;
+  font-size: 2.2em;
+}
+
+.caja-contenido {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+input, button {
+  font-size: 1em;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
 }
 
 button {
-  background-color: #00b894; /* verde alegre */
+  background-color: #00b894;
   color: white;
-  border: none;
-  padding: 12px 24px;
-  margin: 12px;
-  border-radius: 10px;
   cursor: pointer;
-  font-size: 18px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #55efc4; /* verde menta */
   transform: scale(1.05);
 }
 
-input {
-  padding: 8px;
-  border: 1px solid #b2bec3;
-  border-radius: 6px;
-  font-size: 16px;
-}
-
-#vidas, #puntaje {
-  font-weight: bold;
-  margin: 10px;
-}
-
-#diploma {
-  background-color: white;
-  border: 2px solid #ffeaa7;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px auto;
-  width: 80%;
-  max-width: 500px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-#resultado {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-#inicio {
-  margin-top: 50px;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  display: inline-block;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+.opcion {
+  display: block;
+  width: 90%;
+  max-width: 300px;
+  margin: 10px auto;
 }
 
 #pregunta {
-  font-size: 24px;
+  font-size: 1.3em;
   font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
-#pregunta, #opciones, #puntaje, #vidas, #resultado {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 15px;
-  border-radius: 12px;
-  margin: 10px auto;
-  width: 90%;
-  max-width: 600px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
-    font-size: 16px;
-  }
 
-  #diploma {
-    width: 95%;
-    padding: 15px;
-  }
-
-  button {
-    font-size: 16px;
-    padding: 10px 20px;
-  }
-
-  input {
-    width: 90%;
-    font-size: 16px;
-  }
-}
-.caja-contenido {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 15px;
-  border-radius: 12px;
-  margin: 10px auto;
-  width: 90%;
-  max-width: 600px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
 #pregunta:empty,
 #opciones:empty,
 #resultado:empty {
