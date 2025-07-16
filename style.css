@@ -1,7 +1,6 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #dafbfd url('https://cdn.pixabay.com/photo/2016/10/12/14/28/colombia-1738892_1280.png') no-repeat center center fixed;
-  background-size: cover;
+  background-color: #f4faff;
   text-align: center;
   margin: 0;
   padding: 20px;
@@ -13,7 +12,7 @@ h1 {
 }
 
 .caja-contenido {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.95);
   padding: 15px;
   border-radius: 12px;
   margin: 10px auto;
@@ -53,6 +52,21 @@ button:hover {
   width: 90%;
   max-width: 300px;
   margin: 10px auto;
+}
+
+/* NUEVO ESTILO PARA RESULTADO */
+#resultado {
+  font-size: 1.5em;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.resultado-correcto {
+  color: #2ecc71;
+}
+
+.resultado-incorrecto {
+  color: #e74c3c;
 }
 
 #pregunta {
