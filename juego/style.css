@@ -1,81 +1,155 @@
+/* ======= ESTILO GENERAL ======= */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4faff;
+  font-family: 'Arial Rounded MT Bold', 'Fredoka', sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
   text-align: center;
-  margin: 0;
   padding: 20px;
+  margin: 0;
 }
 
 h1 {
-  color: #0275d8;
   font-size: 2.2em;
+  color: #0077b6;
+  margin-bottom: 10px;
 }
 
-.caja-contenido {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 15px;
-  border-radius: 12px;
-  margin: 10px auto;
-  width: 90%;
-  max-width: 600px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+/* ======= INICIO DEL JUEGO ======= */
+#inicio {
+  margin-bottom: 30px;
 }
 
-input, button {
-  font-size: 1em;
+#inicio input[type="text"] {
   padding: 10px;
-  margin: 5px;
+  font-size: 1em;
+  border: 2px solid #ccc;
   border-radius: 8px;
-  border: none;
+  width: 250px;
+  max-width: 90%;
+  margin: 10px 0;
+  background-color: #f0f0f0;
 }
 
-#nombreJugador {
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-button {
+#inicio button {
   background-color: #00b894;
   color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: background-color 0.3s;
 }
 
-button:hover {
+#inicio button:hover {
+  background-color: #019875;
+}
+
+/* ======= PREGUNTAS Y OPCIONES ======= */
+#pregunta {
+  font-size: 1.4em;
+  margin: 20px 0;
+}
+
+#opciones button {
+  display: block;
+  margin: 10px auto;
+  padding: 12px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffeaa7;
+  color: #2d3436;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 80%;
+  max-width: 300px;
+}
+
+#opciones button:hover {
+  background-color: #fab1a0;
+}
+
+/* ======= RESULTADO ======= */
+#resultado {
+  font-size: 1.2em;
+  margin: 15px 0;
+  font-weight: bold;
+  min-height: 1.4em;
+}
+
+/* ======= PUNTAJE Y VIDAS ======= */
+#puntaje, #vidas {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+/* ======= DIPLOMA ======= */
+#diploma {
+  margin-top: 40px;
+  padding: 30px 20px;
+  background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+  border: 3px dashed #00cec9;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#diploma h2 {
+  font-size: 1.8em;
+  color: #0984e3;
+  margin-bottom: 10px;
+}
+
+#diploma p {
+  font-size: 1.1em;
+  color: #2d3436;
+  margin: 10px 0;
+}
+
+#diploma button {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1em;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#diploma button:hover {
   transform: scale(1.05);
 }
 
-.opcion {
-  display: block;
-  width: 90%;
-  max-width: 300px;
-  margin: 10px auto;
+/* ======= BOTONES GENERALES ======= */
+button.opcion {
+  background-color: #ffeaa7;
 }
 
-/* NUEVO ESTILO PARA RESULTADO */
-#resultado {
-  font-size: 1.5em;
-  margin-top: 15px;
-  font-weight: bold;
+button.opcion:hover {
+  background-color: #fab1a0;
 }
 
-.resultado-correcto {
-  color: #2ecc71;
-}
+/* ======= RESPONSIVO ======= */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
 
-.resultado-incorrecto {
-  color: #e74c3c;
-}
+  #pregunta {
+    font-size: 1.2em;
+  }
 
-#pregunta {
-  font-size: 1.3em;
-  font-weight: bold;
-}
+  #opciones button {
+    font-size: 1em;
+    width: 90%;
+  }
 
-#pregunta:empty,
-#opciones:empty,
-#resultado:empty {
-  display: none;
+  #inicio input[type="text"] {
+    width: 90%;
+  }
 }
